@@ -10,3 +10,4 @@ build
 build/**
 aiowowapi.egg-info
 aiowowapi.egg-info/**
+.idea/

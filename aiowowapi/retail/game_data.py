@@ -131,6 +131,22 @@ class GameData():
         namespace = 'dynamic-{region}'
         
         return await self.getGameApiResource(namespace, endpoint)
+
+    async def getCommodities(self):
+        """Returns all active commodity auctions.
+
+        Auction house data updates at a set interval. The value was initially set at 1 hour; however, it might change over time without notice.
+
+        Depending on the number of active auctions in the region, the response from this endpoint may be rather large, sometimes exceeding 10 MB.
+
+        :return: The API response in JSON format/a dict object
+        :rtype: dict
+        """
+        endpoint = "/data/wow/auctions/commodities"
+
+        namespace = 'dynamic-{region}'
+
+        return await self.getGameApiResource(namespace, endpoint)
     
     #endregion
     
