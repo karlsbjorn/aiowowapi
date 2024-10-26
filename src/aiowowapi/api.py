@@ -1,7 +1,7 @@
 import asyncio
 from datetime import datetime, timedelta
 from types import TracebackType
-from typing import Union, Optional, Type, Dict, Any
+from typing import Any, Dict, Optional, Type, Union
 
 import aiohttp
 
@@ -318,10 +318,12 @@ class API:
                             'methods are {}'.format(
                                 method, list(supported_methods.keys())))
 
+                    headers: Optional[Dict] = {"Authorization:": f"Bearer {params.pop('access_token')}"} if params and params.get("access_token") else None
                     # Make the request
                     async with supported_methods[method](
                             hostname.format(api_endpoint=api_endpoint),
                             params=params,
+                            headers=headers,
                             auth=auth
                     ) as response:
 
