@@ -318,7 +318,7 @@ class API:
                             'methods are {}'.format(
                                 method, list(supported_methods.keys())))
 
-                    headers: Optional[Dict] = {"Authorization:": f"Bearer {params.pop('access_token')}"} if params and params.get("access_token") else None
+                    headers: Optional[Dict] = {"Authorization": f"Bearer {params.pop('access_token')}"} if params and params.get("access_token") else None
                     # Make the request
                     async with supported_methods[method](
                             hostname.format(api_endpoint=api_endpoint),
